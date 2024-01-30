@@ -12,12 +12,14 @@ jobs:
       - name: Change Working Directory
         run: |
           ls -la
-          cd ./recipe-demo
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '20'  
+
+      - name: Change Working Directory
+        run: cd ./recipe-demo
 
       - name: Print Current Working Directory
         run: pwd

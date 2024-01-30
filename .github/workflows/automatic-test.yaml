@@ -5,9 +5,12 @@ jobs:
   automatic-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
          ref: main
+      - name: Change Working Directory
+        run: cd ./recipe-demo
       - uses: actions/setup-node@v3
         with:
           node-version: '20'

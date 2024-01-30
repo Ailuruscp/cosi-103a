@@ -10,10 +10,20 @@ jobs:
         with:
          ref: main
       - name: Change Working Directory
-        run: cd ./recipe-demo
-      - uses: actions/setup-node@v3
+        run: |
+          ls -la
+          cd ./recipe-demo
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
-      - run: pwd
-      - run: npm install
-      - run: npm run test
+          node-version: '20'  
+
+      - name: Print Current Working Directory
+        run: pwd
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test

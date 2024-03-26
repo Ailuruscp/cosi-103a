@@ -17,10 +17,20 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           
-      - name: Build and deploy Container App
+      - name: Build and deploy frontend Container App
         uses: azure/container-apps-deploy-action@v1
         with:
           appSourcePath: ${{ github.workspace }}/recipe-demo
           acrName: reactrecipeapp
           containerAppName: react-app-recipe
           resourceGroup: RecipeWebsite
+      
+      - name: Build and deploy backend Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/recipe-backend
+          acrName: RecipeBackend
+          containerAppName: react-app-recipe-backend
+          resourceGroup: RecipeWebsite
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}

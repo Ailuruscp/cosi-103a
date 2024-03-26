@@ -20,7 +20,7 @@ jobs:
       - name: Build and deploy Container App
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}/recipe-demo
+          appSourcePath: ${{ github.workspace }}
           acrName: reactrecipeapp
           containerAppName: react-app-recipe
           resourceGroup: RecipeWebsite

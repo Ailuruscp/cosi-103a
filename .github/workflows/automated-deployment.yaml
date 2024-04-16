@@ -27,6 +27,7 @@ jobs:
       - name: Deploy to Azure Container App
         run: |
           export APP_NAME=reactrecipeapp
+          export APP_ENVIRONMENT_NAME=prd
           export RESOURCE_GROUP=RecipeWebsite
           export BLUE_COMMIT_ID=fb699ef
           export GREEN_COMMIT_ID=c6f1515

@@ -17,13 +17,13 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           
-      # - name: Build and deploy Container App
-      #   uses: azure/container-apps-deploy-action@v1
-      #   with:
-      #     appSourcePath: ${{ github.workspace }}/recipe-demo
-      #     acrName: reactrecipeapp
-      #     containerAppName: react-app-recipe
-      #     resourceGroup: RecipeWebsite
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}/recipe-demo
+          acrName: reactrecipeapp
+          containerAppName: react-app-recipe
+          resourceGroup: RecipeWebsite
       - name: Deploy to Azure Container App
         run: |
           export APP_NAME=reactrecipeapp
@@ -37,7 +37,7 @@ jobs:
 
           az containerapp revision label add --name $APP_NAME --resource-group $RESOURCE_GROUP --label blue --revision $APP_NAME--$BLUE_COMMIT_ID
 
-          
+
       - name: Run smoke tests
         run: |
           NEW_REVISION_URL="http://<new-revision-specific-url>"
